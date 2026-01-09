@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi amor</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <div class="login-card">
+            
+            <div class="photo-column">
+                <img src="password.jpeg" alt="Nosotros" class="couple-photo">
+            </div>
+
+            <div class="input-column">
+                <h2>ingresa la contraseña</h2>
+                <h2>(our special day)</h2>
+                
+                <div class="password-display" id="display">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="keypad">
+                    <button onclick="addNumber('1')">1</button>
+                    <button onclick="addNumber('2')">2</button>
+                    <button onclick="addNumber('3')">3</button>
+                    <button onclick="addNumber('4')">4</button>
+                    <button onclick="addNumber('5')">5</button>
+                    <button onclick="addNumber('6')">6</button>
+                    <button onclick="addNumber('7')">7</button>
+                    <button onclick="addNumber('8')">8</button>
+                    <button onclick="addNumber('9')">9</button>
+                    <button onclick="resetCode()" class="action-btn">C</button>
+                    <button onclick="addNumber('0')">0</button>
+                    <button class="action-btn">#</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-card" id="search-screen" style="display: none;">
+            <div class="search-content">
+                <div class="profile-circle">
+                    <img src="pagina2.jpeg" alt="Perfil" class="profile-img">
+                </div>
+                
+                <div class="search-bar-container">
+                    <div class="search-bar">
+                        <span class="search-text">Cuánto tiempo llevamos juntos?</span>
+                        <button class="search-btn" onclick="goToTimer()">
+                            🔍
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timer-card" id="timer-screen" style="display: none;">
+            <div class="timer-content">
+                <div class="timer-photo-frame">
+                    <img src="time.jpeg" alt="Nosotros" class="timer-img">
+                </div>
+
+                <div class="timer-display">
+                    <div class="time-unit">
+                        <span id="days">00</span>
+                        <p>Dias</p>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-unit">
+                        <span id="hours">00</span>
+                        <p>Hrs</p>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-unit">
+                        <span id="minutes">00</span>
+                        <p>Mins</p>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-unit">
+                        <span id="seconds">00</span>
+                        <p>Secs</p>
+                    </div>
+
+                    <button class="next-btn" onclick="goToMenu()">➜</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-card" id="menu-screen" style="display: none;">
+            
+            <div class="menu-header">
+                <span class="menu-title">¿QUÉ QUIERES VER, MI AMOR? ❤️</span>
+                <span class="globe-icon">🌐</span>
+            </div>
+
+            <div class="menu-buttons">
+                
+                <div class="icon-btn" onclick="showSection('letters')">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#3D1E6D">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                    </svg>
+                </div>
+
+                <div class="icon-btn" onclick="showSection('photos')">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#3D1E6D">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                    </svg>
+                </div>
+
+                <div class="icon-btn" onclick="showSection('games')">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="#3D1E6D">
+                        <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <p class="footer-note">( Hecho con ❤️ por tu programadora fav dea )</p>
+        </div>
+
+        <div class="letter-card" id="letters-screen" style="display: none;">
+            
+            <button class="back-to-menu-top" onclick="closeLetter(event)">
+                <span class="arrow">⬅</span> Menú
+            </button>
+            
+            <div class="envelope-wrapper" onclick="openEnvelope()">
+                <div class="envelope">
+                    <div class="back-paper"></div>
+                    
+                    <div class="letter-content" id="letter-content" onclick="flipEnvelopeCard(event)">
+                        <div class="letter-inner">
+                            <div class="letter-front">
+                                <h3>Para: mi niño precioso 💌</h3>
+                                <p>
+                                    Mi pequeño, no sabes lo agradecida que estoy de tenerte en mi vida.
+                                    Gracias por hacer mi vida mejor cada día, por tu amor incondicional,
+                                    por tu apoyo constante y por ser mi compañero de vida.
+                                    <br><br>
+                                    Te amo con toda mi alma.
+                                </p>
+                                <span class="click-hint">Click para voltear ✨</span>
+                            </div>
+                            <div class="letter-back">
+                                <p>
+                                    Cuando te conoci nunca me hubiera imaginado que me llegaria a enamorar de ti,
+                                    pero llegaste a mi vida con tanta paz, tanto sentimiento, tanto cariño que fue inevitable
+                                    no hacerlo, eres mi mejor amigo y al mismo tiempo el amor de mi vida, 
+                                    eres el amor bonito, puro y verdadero con el que tanto he soñado toda mi vida, 
+                                    estar enamorada de ti y amarte se sienten como esta canción:
+                                </p>
+                                <img src="spotify.png" alt="Playlist" style="width: 80%; border-radius: 10px;">
+                                <p> Es por eso que te la dedico, mi amor. Te amo </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pocket"></div>
+                    
+                    <div class="pocket"></div>
+    
+                    <div class="lid"></div>
+
+                    <div class="heart"></div>
+                </div>
+            </div>
+            
+            <p class="instruction-text">Haz clic en el sobre para abrir 💌</p>
+        </div>
+
+        <div class="photo-card" id="photos-screen" style="display: none;">
+            
+            <button class="back-to-menu-top" onclick="showSection('menu')">
+                <span class="arrow">⬅</span> Menú
+            </button>
+
+            <div class="gallery-header">
+                Museo de los Recuerdos 📸
+            </div>
+
+            <div class="photo-grid">
+                
+                <div class="photo-item" onclick="openPhoto('foto1.jpeg', 'El inicio de nuestra historia juntos, es un recuerdo que siempre guardaré con amor, sentir tantos nervios y emoción escuchar que sentias algo por mi fue mágico 💖')">
+                    <img src="foto1.jpeg" alt="Recuerdo 1">
+                </div>
+                
+                <div class="photo-item" onclick="openPhoto('foto2.jpeg', 'primera y unica vez que fuimos al gym juntos, lo recuerdo bastante bien, los nervios de entrenar juntos, verte en ropa deportiva fue lo mas lindo ! pd: por mas entrenamientos juntos')">
+                    <img src="foto2.jpeg" alt="Recuerdo 2">
+                </div>
+
+                <div class="photo-item" onclick="openPhoto('foto3.jpeg', 'nuestra primera cita juntos! fue tan linda, tan perfecta, siempre la voy a recordar con tanto amor, me sorprendiste en todo momento, recuerdo los nervios que senti, y se sintió tan especial, el inicio de nuestra historia <3')">
+                    <img src="foto3.jpeg" alt="Recuerdo 3">
+                </div>
+                
+                <div class="photo-item" onclick="openPhoto('foto4.jpeg', 'una de mis fotos favoritas, el ir juntos a esa feria, hablar sobre el futuro y los planes que tenemos se sintió tan hermoso, luego compartir un helado juntos :D')">
+                    <img src="foto4.jpeg" alt="Recuerdo 4">
+                </div>
+
+                <div class="photo-item" onclick="openPhoto('foto5.jpeg', 'nuestra primera premier juntos! gracias por elegirme para acompañarte y compartir tu tiempo conmigo, no sabes cuanto valoro y aprecio todos esos detalles, mi chico lindo')">
+                    <img src="foto5.jpeg" alt="Recuerdo 5">
+                </div>
+
+                <div class="photo-item" onclick="openPhoto('foto6.jpeg', 'AY ESTE DIA! uno de los dias mas especiales sin duda alguna, el que te hayas tomado el tiempo de venir hasta acá, el verte compartir y jugar con mi hermanito fue lo mas especial para mi, como se llevaron tan bien')">
+                    <img src="foto6.jpeg" alt="Recuerdo 6">
+                </div>
+
+                <div class="photo-item" onclick="openPhoto('foto7.jpeg', 'no sabes lo especial que es para mi el ir a misa y luego compartir tiempo juntos, el que ambos seamos cercanos a Dios, que él sea la base y pilar fundamental de nuestra vida y nuestra relación es lo mejor de la vida 🤍 que siempre sea asi')">
+                    <img src="foto7.jpeg" alt="Recuerdo 7">
+                </div>
+
+                <div class="photo-item" onclick="openPhoto('foto8.jpeg', 'esta foto siempre va a representar todo nuestro esfuerzo en los estudios, como nos apoyamos mutuamente, nuestras tardes de estudio, brindarnos paz en los buenos y malos momentos, eres el chico de mis sueños en todo sentido. Estoy muy orgullosa de ti')">
+                    <img src="foto8.jpeg" alt="Recuerdo 8">
+                </div>
+
+                <div class="photo-item" onclick="openPhoto('foto9.jpeg', 'esta foto representa seguridad y paz para mi, el saber que nos tenemos mutuamente para cuidarnos, amarnos y respetarnos es lo mas especial del mundo, gracias por ser mi protector, mi compañero y mi mejor amigo')">
+                    <img src="foto9.jpeg" alt="Recuerdo 9">
+                </div>
+
+                <div class="photo-item" onclick="openPhoto('foto10.jpeg', 'Nuestra promesa y compromiso con Dios. Considero que es de las fotos más intimas y especiales, el saber que ambos queremos construir un futuro juntos bajo los principios y valores que Dios nos enseña me llena de felicidad y orgullo, gracias por ser ese hombre de fe y amor que siempre soñé')">
+                    <img src="foto10.jpeg" alt="Recuerdo 10">
+                </div>
+
+                <div class="photo-item" onclick="openPhoto('foto11.jpeg', 'Una de nuestras fotos más lindas, el verte convivir con mi familia siempre me va a llenar de felicidad, gracias por todo el esfuerzo que haces y por ser tú mismo! Me haces la chica más feliz del mundo')">
+                    <img src="foto11.jpeg" alt="Recuerdo 11">
+                </div>
+
+                <div class="photo-item" onclick="openPhoto('foto12.jpeg', 'No puedo dejar pasar esta foto y este momento, es una de mis fotos favoritas, ese dia significó el entregarme tal cual soy a alguien y no sentir el miedo de sentirme juzgada, gracias por siempre brindarme esa confianza y seguridad, siempre será devuellta con todo mi amor, para ambos significó el iniciar algo especial')">
+                    <img src="foto12.jpeg" alt="Recuerdo 12">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="photo-modal" id="photo-modal" onclick="closePhoto()">
+            <div class="modal-content" onclick="event.stopPropagation()"> <div class="photo-flip-card" id="flip-card" onclick="flipPhotoCard()">
+                    <div class="photo-flip-inner">
+                        
+                        <div class="photo-front">
+                            <img id="modal-img" src="" alt="Recuerdo Grande">
+                            <span class="flip-hint">👆 Haz clic para leer la nota</span>
+                        </div>
+
+                        <div class="photo-back">
+                            <p id="modal-text">Aquí va tu mensaje bonito...</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="games-menu-screen" id="games-menu-screen" style="display: none;">
+            
+            <button class="back-to-menu-top" onclick="showSection('menu')">
+                <span class="arrow">⬅</span> Menú
+            </button>
+
+            <div class="games-header">
+                ARCADE LOVE 🕹️
+            </div>
+            
+            <p class="games-subtitle">Selecciona un juego para jugar !</p>
+
+            <div class="games-grid">
+                
+                <div class="game-card" onclick="startGame('puzzle')">
+                    <div class="game-icon">🧩</div>
+                    <div class="game-info">
+                        <h3>Puzzle</h3>
+                        <p>Arma fotos nuestras <3</p>
+                    </div>
+                </div>
+
+                <div class="game-card" onclick="startGame('treasure')">
+                    <div class="game-icon">💋</div>
+                    <div class="game-info">
+                        <h3>Find the Kiss</h3>
+                        <p>Encuentra el mensaje secreto :0</p>
+                    </div>
+                </div>
+
+                <div class="game-card" onclick="startGame('memory')">
+                    <div class="game-icon">🎴</div>
+                    <div class="game-info">
+                        <h3>Memorama</h3>
+                        <p>Encuentra los pares</p>
+                    </div>
+                </div>
+
+                <div class="game-card" onclick="startGame('trivia')">
+                    <div class="game-icon">🧠</div>
+                    <div class="game-info">
+                        <h3>Trivia</h3>
+                        <p>¿Cuánto sabes sobre nosotros?</p>
+                    </div>
+                </div>
+
+                <div class="game-card" onclick="startGame('wordle')">
+                    <div class="game-icon">🔡</div>
+                    <div class="game-info">
+                        <h3>Wordle</h3>
+                        <p>Adivina la palabra</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    <div class="puzzle-section" id="puzzle-screen" style="display: none;">
+            
+            <div class="puzzle-selector" id="puzzle-selector">
+                
+                <button class="back-to-menu-top" onclick="showSection('games')">
+                    <span class="arrow">⬅</span> Juegos
+                </button>
+
+                <h2>Escoge una foto para jugar ! 🧩</h2>
+                
+                <div class="puzzle-options">
+                    <div class="puz-thumb" onclick="initPuzzle('puzzle1.jpeg')"><img src="puzzle1.jpeg"></div>
+                    <div class="puz-thumb" onclick="initPuzzle('puzzle2.jpeg')"><img src="puzzle2.jpeg"></div>
+                    <div class="puz-thumb" onclick="initPuzzle('puzzle3.jpeg')"><img src="puzzle3.jpeg"></div>
+                    <div class="puz-thumb" onclick="initPuzzle('puzzle4.jpeg')"><img src="puzzle4.jpeg"></div>
+                    <div class="puz-thumb" onclick="initPuzzle('puzzle5.jpeg')"><img src="puzzle5.jpeg"></div>
+                </div>
+            </div>
+
+            <div class="puzzle-game-area" id="puzzle-game-area" style="display: none;">
+                
+                <button class="back-to-menu-top" onclick="resetPuzzle()">
+                    <span class="arrow">⬅</span> Elegir otra foto
+                </button>
+
+                <h3 id="puzzle-status">Mueve las piezas! ⏳</h3>
+
+                <div class="game-layout">
+                    <div class="pieces-container" id="pieces-pool"></div>
+                    <div class="puzzle-board" id="puzzle-board"></div>
+                </div>
+
+            </div>
+
+            <div class="win-overlay" id="win-message">
+                <div class="win-card">
+                    <h1>✨ COMPLETADO! ✨</h1>
+                    <p>Uniste las piezas de nuestro recuerdos inolvidable, eres el mejor!</p>
+                    <button onclick="resetPuzzle()">Jugar de nuevo</button>
+                </div>
+            </div>
+
+        </div>
+
+    <div class="kiss-section" id="kiss-screen" style="display: none;">
+            
+            <button class="back-to-menu-top" onclick="showSection('games')">
+                <span class="arrow">⬅</span> Juegos
+            </button>
+
+            <h2 class="kiss-instruction">Encuentra el mensaje secreto... 💋</h2>
+
+            <div id="kiss-container"></div>
+
+            <div class="secret-message-modal" id="kiss-message-modal">
+                <div class="secret-content">
+                    <span class="close-secret" onclick="resetKissGame()">&times;</span>
+                    <div class="heart-icon">❤️</div>
+                    <h3>Te amo, mi amor!</h3>
+                    <p>
+                        Encontraste el mensaje oculto, solo queria decirte que
+                        eres mi mundo entero, no puedo esperar al dia en que nos casemos,
+                        viajemos por el mundo y hagamos todos nuestros planes juntos!
+                        Eres el mejor novio del universo.
+                        Pd: Por encontrar el mensaje te ganaste un besito y un vale: puedes pedir lo que quieras y lo cumpliré :0
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    <div class="memory-section" id="memory-screen" style="display: none;">
+            
+            <button class="back-to-menu-top" onclick="showSection('games')">
+                <span class="arrow">⬅</span> Juegos
+            </button>
+
+            <h2>Encuentra los pares! 🎴</h2>
+
+            <div class="memory-grid" id="memory-board">
+                </div>
+
+            <button class="restart-btn" onclick="initMemoryGame()">Reiniciar Juego 🔄</button>
+
+            <div class="win-overlay" id="memory-win-message">
+                <div class="win-card">
+                    <h1>✨ MATCHED! ✨</h1>
+                    <p>¡Recuerdas cada detalle de nosotros! ❤️</p>
+                    <button onclick="initMemoryGame()">Jugar de nuevo</button>
+                </div>
+            </div>
+
+        </div>
+
+    <div class="wordle-section" id="wordle-screen" style="display: none;">
+            
+            <button class="back-to-menu-top" onclick="showSection('games')">
+                <span class="arrow">⬅</span> Juegos
+            </button>
+
+            <h2>WORDLE LOVE 🔡</h2>
+            <p class="wordle-instruction">Adivina la palabra</p>
+
+            <div class="wordle-grid" id="wordle-grid">
+                </div>
+
+            <div class="wordle-keyboard" id="wordle-keyboard">
+                </div>
+
+            <button class="restart-btn" onclick="initWordleGame()">Reiniciar Juego 🔄</button>
+
+            <div class="win-overlay" id="wordle-message">
+                <div class="win-card">
+                    <h1 id="wordle-msg-title">✨ YAYYY! ✨</h1>
+                    <p id="wordle-msg-text">Adivinaste la palabra!</p>
+                    <button onclick="initWordleGame()">Jugar de nuevo</button>
+                </div>
+            </div>
+
+        </div>
+
+    <div class="trivia-section" id="trivia-screen" style="display: none;">
+            
+            <button class="back-to-menu-top" onclick="showSection('games')">
+                <span class="arrow">⬅</span> Juegos
+            </button>
+
+            <h2>LOVE QUIZ 🧠</h2>
+            
+            <div class="trivia-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+
+                <div class="question-card">
+                    <h3 id="question-text">Cargando pregunta...</h3>
+                </div>
+
+                <div class="options-grid" id="options-container">
+                    </div>
+
+                <p id="feedback-msg" class="feedback-text"></p>
+            </div>
+
+            <div class="win-overlay" id="trivia-score-screen">
+                <div class="win-card">
+                    <h1>QUIZ TERMINADO! 📝</h1>
+                    <p id="final-score-text">Resultado: 5/5</p>
+                    <p id="final-score-message">Eres el mejor novio del mundo ❤️</p>
+                    <button onclick="restartTrivia()">Jugar de nuevo</button>
+                </div>
+            </div>
+
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

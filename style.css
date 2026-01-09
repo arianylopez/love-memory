@@ -1,0 +1,1527 @@
+/* Configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka', sans-serif; /* Fuente redondeada estilo 'cute' */
+}
+
+body {
+    background-color: #E8D0FF; /* Este es el lila clarito uniforme para todo */
+    height: 100vh;
+    width: 100vw; /* Asegura que use todo el ancho de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Evita barras de desplazamiento */
+    margin: 0;
+}
+
+/* La tarjeta central amarilla */
+.login-card {
+    background-color: #F8F2A9; /* Amarillo pastel */
+    border: 3px solid #000;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.2); /* Sombra dura estilo retro */
+    max-width: 700px;
+}
+
+/* Columna de la foto */
+.photo-column {
+    border: 2px dashed #000; /* Borde punteado como en la foto */
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.couple-photo {
+    width: 200px; /* Ajusta el tamaño de la foto aquí */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Columna del teclado */
+.input-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    color: #000;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* Los puntitos de la contraseña */
+.password-display {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.2s;
+}
+
+.dot.active {
+    background-color: #000; /* Se pone negro cuando escribes un número */
+}
+
+/* Grilla del teclado */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 50%; /* Botones redondos */
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: #fff;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+.action-btn {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* --- Estilos para la Pantalla de Búsqueda y Contador --- */
+
+.search-card, .timer-card {
+    background-color: #F8F2A9; 
+    border: 3px solid #000;
+    border-radius: 50px; /* Bordes más redondeados para parecer una barra de buscador */
+    padding: 20px 30px; /* Menos padding vertical para que se vea alargada */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 900px; /* Hacemos la tarjeta más ancha */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Diseño de la Búsqueda */
+.search-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%; /* IMPORTANTE: Que use todo el ancho disponible */
+}
+
+.profile-circle {
+    width: 70px; /* Un poco más pequeño para estilizar */
+    height: 70px;
+    min-width: 70px; /* Evita que se aplaste */
+    border-radius: 50%;
+    border: 3px solid #000;
+    overflow: hidden;
+    background: #fff;
+    flex-shrink: 0; /* Asegura que el círculo no se encoja */
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-bar-container {
+    flex-grow: 1; /* LA CLAVE: Esto le dice "ocupa todo el espacio sobrante" */
+}
+
+.search-bar {
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 50px; 
+    padding: 12px 25px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%; /* Ahora ocupa el 100% del espacio que le dio el container */
+    box-shadow: inset 3px 3px 5px rgba(0,0,0,0.05); /* Sombra interna sutil */
+}
+
+.search-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    /* Texto truncado si es muy largo en celular */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-btn {
+    border: none;
+    background: transparent;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto; /* Quitamos ancho fijo */
+    height: auto; /* Quitamos altura fija */
+}
+
+.search-btn:hover {
+    transform: scale(1.2) rotate(-10deg); /* Pequeña rotación divertida */
+    background: transparent; 
+}
+
+/* Diseño del Contador */
+.timer-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.timer-photo-frame {
+    width: 250px;
+    height: 180px;
+    border: 3px solid #000;
+    overflow: hidden;
+}
+
+.timer-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.timer-display {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-unit span {
+    font-size: 2.5rem;
+    color: #4A4A4A; /* Color gris oscuro para números */
+}
+
+.time-unit p {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.next-btn {
+    background: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+/* --- Estilos para la Pantalla de Menú --- */
+
+.menu-card {
+    /* Reusamos estilos base, pero centrados */
+    background-color: transparent; /* Fondo transparente para que se vean los elementos flotando */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.menu-header {
+    background-color: #F8F2A9; /* Amarillo pastel */
+    border: 3px solid #000;
+    border-radius: 50px;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+}
+
+.menu-title {
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.menu-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-btn {
+    background-color: #F8F2A9;
+    border: 3px solid #000;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.icon-btn:hover {
+    transform: translateY(-5px); /* Efecto de flotar al pasar el mouse */
+    background-color: #fff;
+}
+
+.icon-btn svg {
+    width: 50px; /* Tamaño del icono */
+    height: 50px;
+}
+
+.footer-note {
+    font-size: 0.8rem;
+    color: rgba(0,0,0,0.5);
+    margin-top: 20px;
+}
+
+/* --- Estilos de la Carta (Envelope) CORREGIDOS --- */
+
+.letter-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: fadeIn 0.5s;
+    
+    /* AGREGA ESTA LÍNEA PARA EL 3D: */
+    perspective: 1000px;
+}
+
+/* --- BOTÓN MENÚ ARREGLADO --- */
+.back-to-menu-top {
+    position: absolute;
+    top: 30px; /* Un poco más abajo del borde superior */
+    left: 60px; /* MÁS A LA DERECHA (antes estaba muy a la orilla) */
+    
+    /* Flexbox para alinear flecha y texto */
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    gap: 12px; /* Espacio entre la flecha y la palabra */
+    
+    /* TAMAÑO Y FORMA */
+    padding: 12px 35px; /* Aquí está el truco: más relleno a los lados = más ancho */
+    width: auto; /* Dejamos que crezca según el texto */
+    
+    background-color: #F8F2A9;
+    border: 2px solid #000;
+    border-radius: 50px; /* Bordes redondeados tipo pastilla */
+    
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem; /* Texto un poquito más grande */
+    font-family: 'Fredoka', sans-serif;
+    color: #000;
+    
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    z-index: 100;
+}
+
+.back-to-menu-top:hover {
+    transform: translateY(-3px);
+    background-color: #fff;
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+}
+
+.arrow {
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+/* Texto de instrucciones */
+.instruction-text {
+    margin-top: 40px;
+    color: #4A4A4A;
+    font-weight: bold;
+    font-size: 1.2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* --- EL SOBRE --- */
+.envelope-wrapper {
+    position: relative;
+    cursor: pointer;
+    width: 320px;
+    height: 220px;
+    margin-top: 20px;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #d4a384; /* Color interior/fondo */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.back-paper {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #d4a384;
+    z-index: 1;
+}
+
+/* LA CARTA */
+.letter-content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 200px; /* Altura inicial pequeña */
+    background: transparent;
+    z-index: 5; /* Detrás del bolsillo */
+    opacity: 0; /* Invisible al principio */
+    transition: transform 0.6s ease-in-out, height 0.6s ease-in-out, opacity 0.3s;
+}
+
+/* EL BOLSILLO (Triángulo de abajo) */
+.pocket {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 120px solid #e6c0a5; /* Color del sobre */
+    z-index: 10;
+}
+
+/* LA TAPA (Triángulo de arriba) */
+.lid {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 120px solid #dba88b; /* Color un poco más oscuro */
+    transform-origin: top;
+    transition: transform 0.6s ease-in-out;
+    z-index: 20; /* Encima de todo al estar cerrado */
+}
+
+
+/* --- ANIMACIONES AL ABRIR --- */
+
+/* 1. Abrir tapa */
+.envelope-wrapper.open .lid {
+    transform: rotateX(180deg);
+    z-index: 0; /* Se va al fondo */
+}
+
+/* 2. Sacar carta */
+.envelope-wrapper.open .letter-content {
+    height: 330px; /* Un poquito menos alta para que quepa mejor */
+    /* Cambiamos -180px por -120px. 
+       Esto hace que la carta suba MENOS y se quede más abajo. */
+    transform: translateX(-50%) translateY(-120px); 
+    z-index: 30; 
+    opacity: 1;
+    transition-delay: 0.4s;
+}
+
+/* --- ESTILOS INTERNOS DE LA CARTA --- */
+.letter-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d; /* ¡CLAVE! Habilita el 3D */
+}
+
+.letter-content.flip .letter-inner {
+    transform: rotateY(180deg);
+}
+
+.letter-front, .letter-back {
+    position: absolute; /* ¡CLAVE! Para que estén una encima de la otra */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Estética */
+    background-color: #fff0f5; 
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    padding: 20px;
+    
+    /* Oculta la parte trasera de cada cara */
+    backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden; /* Para Safari/Chrome antiguos */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.letter-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+/* Estilos de texto frontal */
+.letter-front h3 { color: #d63384; margin-bottom: 10px; font-family: 'Fredoka', sans-serif;}
+.letter-front p { font-size: 0.9rem; color: #333; line-height: 1.4; font-family: monospace; }
+
+/* CARA TRASERA (La que aparece al girar) */
+.letter-back {
+    transform: rotateY(180deg); /* Ya está girada esperando el flip */
+    z-index: 1;
+    overflow-y: auto; /* Por si el texto es muy largo */
+}
+/* --- EL SELLO DE CORAZÓN --- */
+.heart {
+    position: absolute;
+    top: 50%; /* Posición vertical (ajustable) */
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: #C41E3A; /* Rojo bonito */
+    z-index: 25; /* Encima de la tapa */
+    
+    /* Para rotar el cuadrado y formar el corazón */
+    transform: translate(-50%, -20%) rotate(45deg);
+    transition: transform 0.5s ease-in-out, opacity 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Sombra suave */
+}
+
+/* Los círculos que hacen la forma del corazón */
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #C41E3A;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -8px;
+    left: 0;
+}
+
+.heart::after {
+    left: -8px;
+    top: 0;
+}
+
+/* --- ANIMACIÓN AL ABRIR --- */
+/* Cuando el sobre se abre, el corazón desaparece suavemente o se mueve */
+.envelope-wrapper.open .heart {
+    opacity: 0; /* Desaparece */
+    transform: translate(-50%, -20%) rotate(45deg) scale(0.5); /* Se hace chiquito */
+    transition-delay: 0s; /* Inmediato */
+}
+
+/* --- ESTILOS DE LA GALERÍA DE FOTOS --- */
+
+.photo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* Permite hacer scroll si hay muchas fotos */
+    width: 100%;
+    padding-top: 100px; /* Espacio para el botón de menú */
+    background-color: transparent;
+    animation: fadeIn 0.5s;
+}
+
+.gallery-header {
+    background-color: #F8F2A9;
+    border: 3px solid #000;
+    border-radius: 50px;
+    padding: 10px 40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+}
+
+/* --- LA CUADRÍCULA (GRID) --- */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px;
+    width: 90%;
+    max-width: 800px;
+    margin-bottom: 50px;
+}
+
+.photo-item {
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 10px;
+    height: 150px; /* Altura de las fotos pequeñas */
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.photo-item:hover {
+    transform: scale(1.05); /* Efecto zoom al pasar el mouse */
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la foto para que llene el cuadro */
+}
+
+/* --- EL VISOR (MODAL) --- */
+.photo-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8); /* Fondo oscuro transparente */
+    z-index: 1000; /* Encima de TODO */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Contenedor de la tarjeta giratoria */
+.photo-flip-card {
+    background-color: transparent;
+    width: 350px;  /* Tamaño de la foto grande */
+    height: 450px;
+    perspective: 1000px; /* Necesario para el efecto 3D */
+    cursor: pointer;
+}
+
+/* El contenedor interno que gira */
+.photo-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Clase para activar el giro */
+.photo-flip-card.flipped .photo-flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* Caras de la tarjeta (Frente y Dorso) */
+.photo-front, .photo-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la cara trasera */
+    border: 4px solid #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    background-color: #fff;
+}
+
+/* ESTILO DEL FRENTE (FOTO) */
+.photo-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flip-hint {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* ESTILO DEL DORSO (TEXTO) */
+.photo-back {
+    background-color: #F8F2A9; /* Fondo amarillo tipo nota */
+    color: #000;
+    transform: rotateY(180deg); /* Ya está girada para esperar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: center;
+    background-image: radial-gradient(#d4c685 1px, transparent 1px); /* Efecto puntitos */
+    background-size: 20px 20px;
+}
+
+.close-modal-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- ESTILOS DEL MENÚ DE JUEGOS --- */
+
+.games-menu-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: transparent;
+    padding-top: 80px; /* Espacio para el botón de volver */
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote al entrar */
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.games-header {
+    background-color: #F8F2A9;
+    border: 3px solid #000;
+    border-radius: 15px;
+    padding: 15px 50px;
+    font-size: 2rem;
+    font-weight: 900; /* Letra muy gruesa */
+    letter-spacing: 3px;
+    box-shadow: 6px 6px 0px rgba(0,0,0,1); /* Sombra negra dura */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #3D1E6D;
+}
+
+.games-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    font-weight: bold;
+    color: #4A4A4A;
+    font-family: 'Courier New', monospace;
+}
+
+/* --- GRID DE JUEGOS --- */
+.games-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 900px;
+    width: 90%;
+}
+
+.game-card {
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 20px;
+    width: 220px; /* Ancho fijo para que sean iguales */
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto Hover: Se levanta y cambia de color */
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 8px 8px 0px rgba(0,0,0,1); /* Sombra negra sólida al pasar mouse */
+    background-color: #FFFBE6;
+}
+
+/* Efecto Click: Se hunde */
+.game-card:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0px rgba(0,0,0,1);
+}
+
+.game-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.game-card:hover .game-icon {
+    transform: scale(1.2) rotate(10deg); /* El icono se mueve divertido */
+}
+
+.game-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #3D1E6D;
+}
+
+.game-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* --- ESTILOS DEL PUZZLE --- */
+
+.puzzle-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 80px;
+    background-color: transparent; /* Usa el fondo lila general */
+}
+
+/* 1. SELECTOR DE FOTOS */
+.puzzle-selector {
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+
+.puzzle-selector h2 {
+    background: #F8F2A9;
+    border: 3px solid #000;
+    padding: 10px 30px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+.puzzle-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.puz-thumb {
+    width: 150px;
+    height: 150px;
+    border: 3px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+    background: #fff;
+}
+
+.puz-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.puz-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+/* 2. ÁREA DE JUEGO */
+.puzzle-game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    max-width: 1000px;
+}
+
+#puzzle-status {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #3D1E6D;
+}
+
+.game-layout {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Contenedor de piezas sueltas */
+.pieces-container {
+    width: 320px;
+    min-height: 320px;
+    background: rgba(255,255,255,0.5);
+    border: 3px dashed #000;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+/* El Tablero donde se arman */
+.puzzle-board {
+    width: 320px; /* Tamaño final del puzzle */
+    height: 320px;
+    background-color: #eee;
+    border: 3px solid #000;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    grid-template-rows: repeat(4, 1fr);    /* 4 filas */
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.2);
+    /* Imagen de fondo muy suave como guía (opcional) */
+    background-size: cover;
+}
+
+/* LAS PIEZAS INDIVIDUALES */
+.puzzle-piece {
+    width: 80px; /* 320px / 4 = 80px */
+    height: 80px;
+    background-size: 320px 320px; /* Debe coincidir con el tamaño del tablero */
+    cursor: grab;
+    border: 1px solid rgba(0,0,0,0.1); /* Borde sutil para verlas mejor */
+    box-sizing: border-box;
+    transition: transform 0.1s;
+}
+
+.puzzle-piece:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+    z-index: 100;
+}
+
+/* Espacios del tablero (Slots) */
+.drop-zone {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.drop-zone.hovered {
+    background-color: rgba(255,255,0,0.3); /* Se ilumina al pasar pieza por encima */
+}
+
+.restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #FF6B6B;
+    border: 2px solid #000;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Mensaje de victoria */
+.win-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.win-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 5px solid #F8F2A9;
+    animation: popIn 0.5s;
+}
+
+/* --- JUEGO FIND THE KISS --- */
+
+.kiss-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffe6ee; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* El fondo no tiene cursor especial */
+    cursor: default; 
+}
+
+.kiss-instruction {
+    margin-top: 50px;
+    font-family: 'Fredoka', sans-serif;
+    color: #D4145A;
+    font-size: 1.8rem;
+    z-index: 10;
+    pointer-events: none;
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* El beso individual (Todos se ven igual) */
+.kiss-icon {
+    position: absolute;
+    width: 85px; 
+    opacity: 0.8; 
+    transition: transform 0.1s, opacity 0.2s;
+    user-select: none; 
+    
+    /* CAMBIO CLAVE: Todos tienen manita para que crea que cualquiera puede ser */
+    cursor: pointer; 
+    
+    /* Para que no se sobrepongan al modal si aparecen muy arriba */
+    z-index: 1; 
+}
+
+/* Efecto al pasar el mouse (Igual para TODOS) */
+.kiss-icon:hover {
+    opacity: 1;
+    transform: scale(1.1) rotate(10deg);
+    z-index: 20; 
+}
+
+/* Efecto al hacer clic (Feedback visual) */
+.kiss-icon:active {
+    transform: scale(0.9);
+}
+
+/* --- EL BESO GANADOR --- */
+.winner-kiss {
+    /* YA NO HAY PISTAS AQUÍ. 
+       Visualmente es idéntico a los demás.
+       La magia solo ocurre en el JS al hacer clic. */
+    z-index: 5; 
+}
+
+/* --- MODAL DEL MENSAJE SECRETO --- */
+.secret-message-modal {
+    display: none; /* Oculto */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    animation: fadeIn 0.5s;
+}
+
+.secret-content {
+    background: #fff;
+    padding: 40px;
+    border: 3px solid #C41E3A; /* Borde rojo */
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 10px 10px 0 rgba(196, 30, 58, 0.2);
+    position: relative;
+}
+
+.heart-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.secret-content h3 {
+    color: #C41E3A;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.secret-content p {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.close-secret {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa;
+}
+.close-secret:hover { color: #000; }
+
+/* --- JUEGO MEMORAMA --- */
+
+/* --- JUEGO MEMORAMA (REDITADO PANTALLA COMPLETA) --- */
+
+.memory-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    /* Quitamos el fondo azul y lo dejamos transparente para usar el general */
+    background-color: transparent; 
+    padding-top: 80px; /* Espacio para el botón de menú superior */
+    padding-bottom: 40px;
+}
+
+.memory-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem; /* Título más grande */
+    color: #3D1E6D;
+    margin-bottom: 40px; /* Más espacio debajo del título */
+    
+    /* Estilo de etiqueta arcade */
+    background: #F8F2A9;
+    padding: 15px 40px;
+    border: 3px solid #000;
+    border-radius: 50px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* LA CUADRÍCULA (Ahora más grande y responsiva) */
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 20px; /* Más espacio entre cartas */
+    
+    /* Ancho dinámico: ocupa el 90% de la pantalla pero no pasa de 600px */
+    width: 90%; 
+    max-width: 600px;
+    
+    margin-bottom: 40px; /* Espacio antes del botón de reinicio */
+    perspective: 1000px;
+}
+
+/* LA CARTA (Contenedor) */
+.memory-card {
+    width: 100%;
+    /* Altura fija un poco más grande para que se vean bien las fotos */
+    height: 100px; 
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    user-select: none;
+}
+
+/* Efectos de giro (igual que antes) */
+.memory-card.flip { transform: rotateY(180deg); }
+.memory-card.match { transform: rotateY(180deg); cursor: default; }
+
+/* CARAS DE LA CARTA (Estilo mejorado) */
+.front-face, .back-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 15px; /* Bordes más redondeados */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    border: 3px solid #000; /* Borde más grueso */
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+/* LA PORTADA (Interrogación) */
+.front-face {
+    background-color: #F8F2A9;
+    font-size: 2.5rem;
+    transform: rotateY(0deg);
+}
+
+/* LA FOTO */
+.back-face {
+    background-color: white;
+    transform: rotateY(180deg);
+}
+
+.back-face img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.restart-btn {
+    /* 1. Ancho: Aumentamos mucho el padding lateral para hacerlo largo */
+    padding: 12px 80px;
+    
+    /* 2. Texto: Letras más pequeñas */
+    font-size: 0.95rem;
+    font-weight: 700; /* Bold, pero legible */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Estilos generales estilo Arcade (igual que el botón de arriba) */
+    background-color: #FF6B6B; /* Rojo intenso */
+    border: 3px solid #000; /* Borde negro grueso */
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+    cursor: pointer;
+    border-radius: 50px; /* Forma de píldora perfecta */
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.2); /* Sombra dura */
+    
+    /* Asegurar centrado perfecto del texto más pequeño */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Un poco de separación extra arriba */
+    margin-top: 30px;
+    
+    transition: transform 0.1s, background-color 0.2s, box-shadow 0.1s;
+}
+
+/* Efectos al pasar el mouse (Hover) */
+.restart-btn:hover {
+    transform: translateY(-3px); /* Se levanta */
+    background-color: #ff4f4f; /* Rojo un poco más claro */
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.2); /* Sombra crece */
+}
+
+/* Efectos al hacer clic (Active) */
+.restart-btn:active {
+    transform: translateY(1px); /* Se hunde */
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.2); /* Sombra se achica */
+}
+
+/* --- JUEGO WORDLE --- */
+
+.wordle-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: transparent;
+    padding-top: 80px;
+}
+
+.wordle-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    color: #3D1E6D;
+    background: #F8F2A9;
+    padding: 10px 40px;
+    border: 3px solid #000;
+    border-radius: 50px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+}
+
+.wordle-instruction {
+    font-family: 'Courier New', monospace;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* GRID DE JUEGO (5 col x 6 filas) */
+.wordle-grid {
+    display: grid;
+    /* grid-template-columns: SE DEFINE EN JS SEGÚN EL LARGO DE LA PALABRA */
+    grid-template-rows: repeat(6, 1fr); /* Siempre son 6 intentos */
+    gap: 5px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 95%; /* Para que no se salga en celulares si la palabra es larga */
+}
+
+.tile {
+    /* Usamos min/max para que se adapte */
+    width: 50px; 
+    height: 50px;
+    
+    border: 2px solid #d3d6da;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem; /* Un poco más pequeño por si acaso */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Fredoka', sans-serif;
+    background: white;
+    transition: transform 0.2s, background-color 0.4s, border-color 0.4s;
+}
+
+/* Estados de las letras */
+.tile.active {
+    border-color: #878a8c; /* Borde oscuro al escribir */
+    animation: pop 0.1s;
+}
+
+.tile.correct { background-color: #6aaa64; color: white; border-color: #6aaa64; } /* Verde */
+.tile.present { background-color: #c9b458; color: white; border-color: #c9b458; } /* Amarillo */
+.tile.absent  { background-color: #787c7e; color: white; border-color: #787c7e; } /* Gris */
+
+/* ANIMACIONES */
+@keyframes pop { 50% { transform: scale(1.1); } }
+@keyframes flipIn {
+    0% { transform: rotateX(0); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0); }
+}
+
+.tile.flip {
+    animation: flipIn 0.5s ease-in;
+}
+
+/* TECLADO VIRTUAL */
+.wordle-keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 6px;
+}
+
+.key {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    padding: 15px 10px; /* Botones más altos */
+    min-width: 35px; /* Ancho mínimo */
+    border-radius: 4px;
+    border: none;
+    background-color: #d3d6da;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.key.wide {
+    min-width: 60px; /* Para ENTER y BORRAR */
+    font-size: 0.8rem;
+}
+
+.key:active { transform: scale(0.95); }
+
+/* Colores en el teclado también */
+.key.correct { background-color: #6aaa64; color: white; }
+.key.present { background-color: #c9b458; color: white; }
+.key.absent  { background-color: #787c7e; color: white; }
+
+/* --- JUEGO TRIVIA --- */
+
+.trivia-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: transparent;
+    padding-top: 80px;
+}
+
+.trivia-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    color: #3D1E6D;
+    background: #F8F2A9;
+    padding: 10px 40px;
+    border: 3px solid #000;
+    border-radius: 50px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.trivia-container {
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Barra de progreso */
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background: white;
+    border: 3px solid #000;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #6aaa64; /* Verde */
+    transition: width 0.3s;
+}
+
+/* Tarjeta de Pregunta */
+.question-card {
+    background: white;
+    border: 3px solid #000;
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+}
+
+.question-card h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+/* Botones de Opciones */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Crea 2 columnas iguales (2 arriba, 2 abajo) */
+    gap: 20px; /* Espacio entre los botones */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    margin-top: 10px;
+}
+
+/* Estilo del Botón individual */
+.option-btn {
+    width: 100%; /* IMPORTANTE: Estira el botón para llenar su celda */
+    height: 100%; /* Para que crezca si el texto es largo */
+    min-height: 80px; /* Altura mínima para que se vean grandes y uniformes */
+    
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 15px; /* Bordes redondeados elegantes */
+    padding: 15px;
+    
+    /* Tipografía y Centrado */
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Por si el texto tiene 2 líneas */
+    
+    cursor: pointer;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+
+.option-btn:hover:not(:disabled) {
+    transform: translateY(-4px);
+    background-color: #FFFBE6;
+    box-shadow: 7px 7px 0 rgba(0,0,0,0.15);
+}
+
+/* Active: Se hunde */
+.option-btn:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
+
+/* Colores de Respuesta */
+.option-btn.correct { 
+    background-color: #6aaa64 !important; 
+    color: white !important;
+    border-color: #4a7a47 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+.option-btn.wrong { 
+    background-color: #FF6B6B !important; 
+    color: white !important;
+    border-color: #c94f4f !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* Texto de feedback */
+.feedback-text {
+    height: 30px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* Animación de temblor para error */
+.shake { animation: shake 0.5s; }
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
